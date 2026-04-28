@@ -40,6 +40,10 @@ const HomeScreen = ({ navigation }) => {
     if (error) {
         return <Text>{error}</Text>;
     }
+
+    if (meals.length === 0){
+        return <Text>Data Kosong</Text>
+    }
  
 
     return (
@@ -49,7 +53,7 @@ const HomeScreen = ({ navigation }) => {
                 keyExtractor={(item) => item.idMeal}
                 renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => handleMealPress(item)}>
-                        <Text>{item.strMeal}</Text>
+                        <Text style={{ padding: 10 }}>{item.strMeal}</Text>
                     </TouchableOpacity>
                 )}
                 />
