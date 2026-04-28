@@ -8,6 +8,7 @@ const HomeScreen = ({ navigation }) => {
     const [meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [refreshing, setrefreshing] = useState(false);
 
 
     useEffect(() => {
@@ -27,6 +28,13 @@ const HomeScreen = ({ navigation }) => {
             setLoading(false);
         }   
         
+    };
+
+    const handleRefresh = async () => {
+        setrefreshing(true);
+        await loadMeals();
+        setrefreshing(false);
+    
     };
 
     const handleMealPress = (meal) => {
@@ -56,6 +64,8 @@ const HomeScreen = ({ navigation }) => {
                         <Text style={{ padding: 10 }}>{item.strMeal}</Text>
                     </TouchableOpacity>
                 )}
+                refreshing={refreshing}
+                onRefresh={handleRefresh}
                 />
         </View>
     );
