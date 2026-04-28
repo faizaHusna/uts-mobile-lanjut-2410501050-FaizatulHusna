@@ -1,14 +1,27 @@
+import { useEffect, useState } from 'react';
 import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { fetchMeals } from '../services/mealApi';
+
+
 
 const HomeScreen = ({ navigation }) => {
-    const meals = [
-        { idMeal: '1', strMeal: 'Ayam Goreng'},
-        { idMeal: '2', strMeal: 'Nasi Goreng'},
-    ];
+    const [meals, setMeals] = useState([]);
+
+    useEffect(() => {
+        loadMeals();
+    }, []);
+
+    const loadMeals = async () => {
+        const data = await fetchMeals();
+       
+        
+    };
 
     const handleMealPress = (meal) => {
         navigation.navigate('Detail', { meal });
     };
+
+    
 
     return (
         <View>
