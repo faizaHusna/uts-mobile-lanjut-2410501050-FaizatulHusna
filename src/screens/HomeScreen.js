@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FlatList, Text, TouchableOpacity, View } from 'react-native';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { fetchMeals } from '../services/mealApi';
 
 
@@ -8,7 +8,7 @@ const HomeScreen = ({ navigation }) => {
     const [meals, setMeals] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [refreshing, setrefreshing] = useState(false);
+    const [refreshing, setRefreshing] = useState(false);
 
 
     useEffect(() => {
@@ -20,8 +20,8 @@ const HomeScreen = ({ navigation }) => {
             setLoading(true);
             setError(null);
         
-        const data = await fetchMeals();
-        setMeals(data || []);
+            const data = await fetchMeals();
+            setMeals(data || []);
         } catch (err) {
             setError('Gagal mengambil data');
         } finally {
@@ -31,9 +31,9 @@ const HomeScreen = ({ navigation }) => {
     };
 
     const handleRefresh = async () => {
-        setrefreshing(true);
+        setRefreshing(true);
         await loadMeals();
-        setrefreshing(false);
+        setRefreshing(false);
     
     };
 
@@ -41,27 +41,21 @@ const HomeScreen = ({ navigation }) => {
         navigation.navigate('Detail', { meal });
     };
 
-    if (loading) {
-        return <Text>Loading...</Text>;
-    }
+    if (loading) return <Text>Loading...</Text>;
+    if (error) return <Text>{error}</Text>;
 
-    if (error) {
-        return <Text>{error}</Text>;
-    }
-
-    if (meals.length === 0){
-        return <Text>Data Kosong</Text>
-    }
  
 
     return (
-        <View>
+        <View style={styles.container}>
             <FlatList 
             data={meals}
                 keyExtractor={(item) => item.idMeal}
                 renderItem={({ item }) => (
-                    <TouchableOpacity onPress={() => handleMealPress(item)}>
-                        <Text style={{ padding: 10 }}>{item.strMeal}</Text>
+                    <TouchableOpacity style={styles.card}
+                    onPress={() => handleMealPress(item)}>
+                        
+                        <Text style={styles.title}>{item.strMeal}</Text>
                     </TouchableOpacity>
                 )}
                 refreshing={refreshing}
@@ -70,5 +64,12 @@ const HomeScreen = ({ navigation }) => {
         </View>
     );
 };
+
+const styles = StyleSheet.create({
+    container: { flex: 1, backgroundColor: '#fff', padding: 10, },
+    card: { backgroundColor: '#f5f5f5', padding: 15, borderRadius: 8, marginBottom: 10, },
+    title: { fontSize: 16, fontWeight: 'bold', },
+
+});
 
 export default HomeScreen;
