@@ -62,7 +62,7 @@ const SearchScreen = ({ navigation }) => {
             {error !== '' && <Text style={styles.error}>{error}</Text>}
 
             {/* List */}
-            <FlatList data={results} keyExtractor={(item) => item.idMeal} renderItem={renderItem} ListenEmptyComponent={renderEmpty} contentContainerStyle={styles.listContent} />
+            <FlatList data={results} keyExtractor={(item) => item.idMeal} renderItem={renderItem} ListEmptyComponent={renderEmpty} contentContainerStyle={styles.listContent} />
         </View>
     );
 };
@@ -70,9 +70,9 @@ const SearchScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: { flex: 1, backgroundColor: '#FFF', },
     header: { padding: 20, }, 
-    headertitle: { fontSize: 22, fontWeight: 'bold', },
+    headerTitle: { fontSize: 22, fontWeight: 'bold', },
     inputContainer: { paddingHorizontal: 16, gap: 10, },
-    input: { borderWidth: 1, padding: 10, borderRadius: 0, },
+    input: { borderWidth: 1, padding: 10, borderRadius: 8, },
     button: { backgroundColor: "#FF6B35", padding: 10, borderRadius: 8, alignItems: 'center', },
     buttontext: { color: '#FFF', fontWeight: 'bold', },
     error: { color: 'red', paddingHorizontal: 16, marginTop: 5, },

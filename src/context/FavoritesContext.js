@@ -1,7 +1,7 @@
 import { createContext, useContext, useReducer } from 'react';
 
-const ADD_FAVORITE = 'ADD-FAVORITE';
-const REMOVE_FAVOORITE = 'REMOVE_FAVORITE';
+const ADD_FAVORITE = 'ADD_FAVORITE';
+const REMOVE_FAVORITE = 'REMOVE_FAVORITE';
 
 const initialState = {
     favorites: [],
@@ -13,22 +13,22 @@ const favoritesReducer = (state, action) => {
         case ADD_FAVORITE: {
 
             const alreadyExists = state.favorites.some(
-                (meal) => meal.idMeal === action.playload.idMeal
+                (meal) => meal.idMeal === action.payload.idMeal
             );
             if (alreadyExists) {
                 return state;
             } 
             return {
                 ...state,
-                favorites: [...state.favorites, action.playload],
+                favorites: [...state.favorites, action.payload],
             };
         }
 
-        case REMOVE_FAVOORITE: {
+        case REMOVE_FAVORITE: {
             return {
                 ...state,
                 favorites: state.favorites.filter(
-                    (meal) => meal.idMeal !== action.playload
+                    (meal) => meal.idMeal !== action.payload
                 ),
             };
         
@@ -50,11 +50,11 @@ export const FavoritesProvider = ({ children }) => {
     const [state, dispatch] = useReducer(favoritesReducer, initialState);
     
     const addFavorite = (meal) => {
-        dispatch({ type: ADD_FAVORITE, playload: meal });
+        dispatch({ type: ADD_FAVORITE, payload: meal });
     };
 
     const removeFavorite = (mealId) => {
-        dispatch({ type: REMOVE_FAVOORITE, playload: mealId });
+        dispatch({ type: REMOVE_FAVORITE, payload: mealId });
     };
 
     const isFavorite = (mealId) => {
