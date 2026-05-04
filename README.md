@@ -1,50 +1,51 @@
-# Welcome to your Expo app 👋
+##Nama + Project Mini-Catalog-App Nama: Faizatul Husna NIM: 2410501050 Kelas: B
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+##Tema Tema A:ResepKita - Katalog Resep Kuliner API: https://www.themealdb.com/api.php
 
-## Get started
+Tech Stack
+Aplikasi ResepKita dibangun menggunakan teknologi berikut:
 
-1. Install dependencies
+React Native (Expo SDK 50) Digunakan untuk membangun aplikasi mobile berbasis JavaScript tanpa perlu native code. -React Navigation (v6) Digunakan untuk mengatur navigasi antar screen, dengan kombinasi Stack Navigator dan Bottom Tab Navigator. -Context API + useReducer Digunakan sebagai state management untuk mengelola data favorit secara global tanpa perlu library tammbahan.
 
-   ```bash
-   npm install
-   ```
+Fetch API Digunakan untuk mengambil data dari API eksternal (TheMealDB).
 
-2. Start the app
+Expo Go Digunakan untuk menjalankan dan menguji aplikasi seecara langsung di perangkat mobile.
 
-   ```bash
-   npx expo start
-   ```
+##Cara Install npm install npx expo start
 
-In the output, you'll find options to open the app in a
+##Screenshots C:\Users\Lenovo\Mini-Catalog-App\screenshots\ABOUT_SCREEN.png C:\Users\Lenovo\Mini-Catalog-App\screenshots\DETAIL_SCREEN.png C:\Users\Lenovo\Mini-Catalog-App\screenshots\FAVORITES_SCREEN.png C:\Users\Lenovo\Mini-Catalog-App\screenshots\MAIN_TAB.png C:\Users\Lenovo\Mini-Catalog-App\screenshots\SEARCH_SCREEN.png
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+##Link Video https://drive.google.com/file/d/1MsydWVLjehTqYZ5TBG7tArGP3DqybaxW/view?usp=drivesdk
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+##State Management Aplikasi ini menggunakan Context API untuk mengelola state favorit secara global. Alasan memilih Context API adalah karena data favorit perlu diakses oleh beberapa screen sekaligus, seperti HomeScreen, DetailScreen, dan FavoriteScreen.
 
-## Get a fresh project
+Justifikasi? Dengan Context API, data favorit dapat dibagikan tanpa harus mengirim props secara berulang dari parent ke child (prop drilling)
 
-When you're ready, run:
+Selain itu, Context API sudah bawaan React sehingga tidak memerlukan library tambahan seperti Redux. Untuk skala aplikasi 'ResepKita' yang masih sederhana hingga menengah, Context API lebih ringan, mudah dipahami, dan cukup efisien.
 
-```bash
-npm run reset-project
-```
+Pada implementasinya, state favorit dikelola menggunakan useReducer agar proses tambah dan hapus favorit lebih terstruktur.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+##Referensi
 
-## Learn more
+https://apiko.com/blog/react-native-for-web/
+https://www.youtube.com/watch?v=-D7W6BNMxXo
 
-To learn more about developing your project with Expo, look at the following resources:
+https://stackoverflow.com/questions/71833895/create-a-website-with-react-native-expo-or-react-native-web
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+https://medium.com/@saudafzal25/react-native-simple-recipe-app-using-themealdb-api-e61c7416d54c
 
-## Join the community
+https://reactnavigation.org/docs/nesting-navigators/
 
-Join our community of developers creating universal apps.
+https://reactnative.dev/docs/flatlist?language=javascript
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+https://reactnative.dev/docs/refreshcontrol
+
+https://dev.to/vishnusatheesh/controlled-and-uncontrolled-components-in-react-1me4
+
+##Refleksi Selama proses membuat aplikasi ResepKita dengan React Native dan Expo, saya mendapatkan banyak pengalaman baru sekaligus tantangan yang cukup besar sebagai pemula. Awalnya saya mengira membuat aplikasi hanya soal menulis kode, tetapi ternyata saya belajar bahwa struktur project, penamaan file, dan ketelitian sangat berpengaruh. Saya beberapa kali mengalami error seperti file tidak ditemukan, tombol tidak berfungsi, halaman blank putih, serta data API tidak muncul. Dari situ saya sadar bahwa kesalahan kecil seperti typo, salah import, nama variabel berbeda huruf besar kecil, atau salah menulis props bisa membuat aplikasi gagal berjalan.
+
+Saya juga belajar bagaimana menggunakan Context API untuk fitur favorit. Saat tombol hapus favorit tidak berfungsi, ternyata penyebabnya adalah nama action yang salah. Dari masalah itu saya memahami pentingnya konsistensi nama variabel dan fungsi. Selain itu saya belajar menangani error dari API menggunakan try...catch, sehingga aplikasi tetap aman ketika internet mati atau server bermasalah.
+
+Bagian yang paling menantang adalah debugging, karena error kadang tidak langsung terlihat. Namun justru dari situ saya belajar membaca pesan error dan mencari sumber masalah secara perlahan. Saya juga belajar pentingnya membuat kode yang rapi dan terstruktur agar mudah diperbaiki.
+
+Secara keseluruhan, project ini membuat saya lebih paham dasar React Native seperti component, state, props, navigation, FlatList, dan penggunaan API. Saya merasa kemampuan saya meningkat karena bukan hanya membuat tampilan, tetapi juga belajar menyelesaikan masalah nyata dalam proses coding.
