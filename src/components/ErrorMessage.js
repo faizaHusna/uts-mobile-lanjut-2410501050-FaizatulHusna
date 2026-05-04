@@ -1,23 +1,23 @@
 import { Ionicons } from '@expo/vector-icons';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-const ErrorMessage = ({ message, OnRetry }) => {
+const ErrorMessage = ({ message, onRetry }) => {
     return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
             {/* Icon Error */}
-            <Ionicons name='alert-circle-outline' size={64} color="#FFF6B35" />
+            <Ionicons name='alert-circle-outline' size={64} color="#FF6B35" />
 
             {/* Judul Error */}
-            <Text style={StyleSheet.title}>Oops! Terjadi Kesalahan</Text>
+            <Text style={styles.title}>Oops! Terjadi Kesalahan</Text>
 
             {/* Pesan error detail */}
-            <Text style={StyleSheet.message}>
+            <Text style={styles.message}>
                 {message || 'Gagal mengabmbil data. Periksa Koneksi Internet Anda.'}
             </Text>
 
             {/* Tombol retry */}
             {onRetry && (
-                <TouchableOpacity style={StyleSheet.retryButton} onPress={onRetry}>
+                <TouchableOpacity style={styles.retryButton} onPress={onRetry}>
                     <Ionicons name='refresh-outline' size={20} color='#FFF' />
                     <Text syle={styles.retryText}>COoba Lagi</Text>
                 </TouchableOpacity>

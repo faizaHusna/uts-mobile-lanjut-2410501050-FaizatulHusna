@@ -36,8 +36,8 @@ const HomeScreen = ({ navigation }) => {
 
 
     useEffect(() => {
-        loadMeals();
-    }, [activeCategory]);
+   loadMeals();
+   }, [activeCategory]);
 
     const handleRefresh = useCallback(() => {
         setRefreshing(true);
